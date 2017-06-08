@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CatchFireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="GoalId" />
+          </Key>
+          <Property Name="GoalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoalName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GoalDescription" Type="varchar" MaxLength="500" />
+          <Property Name="GoalAreaId" Type="int" />
+        </EntityType>
+        <EntityType Name="GoalArea">
+          <Key>
+            <PropertyRef Name="GoalAreaId" />
+          </Key>
+          <Property Name="GoalAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoalAreaName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GoalAreaDescription" Type="varbinary" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Trait">
+          <Key>
+            <PropertyRef Name="TraitId" />
+          </Key>
+          <Property Name="TraitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TraitName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TraitDescription" Type="varchar" MaxLength="500" />
+          <Property Name="PositiveTrait" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="CatchFireModelStoreContainer">
+          <EntitySet Name="Goal" EntityType="Self.Goal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoalArea" EntityType="Self.GoalArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trait" EntityType="Self.Trait" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CatchFireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CatchFireEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Traits" EntityType="CatchFireModel.Trait" />
+          <EntitySet Name="Goals" EntityType="CatchFireModel.Goal" />
+          <EntitySet Name="GoalAreas" EntityType="CatchFireModel.GoalArea" />
+        </EntityContainer>
+        <EntityType Name="Trait">
+          <Key>
+            <PropertyRef Name="TraitId" />
+          </Key>
+          <Property Name="TraitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TraitName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TraitDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PositiveTrait" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="GoalId" />
+          </Key>
+          <Property Name="GoalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoalName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GoalDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GoalAreaId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GoalArea">
+          <Key>
+            <PropertyRef Name="GoalAreaId" />
+          </Key>
+          <Property Name="GoalAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoalAreaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GoalAreaDescription" Type="Binary" MaxLength="500" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CatchFireModelStoreContainer" CdmEntityContainer="CatchFireEntities">
+          <EntitySetMapping Name="Traits">
+            <EntityTypeMapping TypeName="CatchFireModel.Trait">
+              <MappingFragment StoreEntitySet="Trait">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PositiveTrait" ColumnName="PositiveTrait" />
+                <ScalarProperty Name="TraitDescription" ColumnName="TraitDescription" />
+                <ScalarProperty Name="TraitName" ColumnName="TraitName" />
+                <ScalarProperty Name="TraitId" ColumnName="TraitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goals">
+            <EntityTypeMapping TypeName="CatchFireModel.Goal">
+              <MappingFragment StoreEntitySet="Goal">
+                <ScalarProperty Name="GoalAreaId" ColumnName="GoalAreaId" />
+                <ScalarProperty Name="GoalDescription" ColumnName="GoalDescription" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoalAreas">
+            <EntityTypeMapping TypeName="CatchFireModel.GoalArea">
+              <MappingFragment StoreEntitySet="GoalArea">
+                <ScalarProperty Name="GoalAreaDescription" ColumnName="GoalAreaDescription" />
+                <ScalarProperty Name="GoalAreaName" ColumnName="GoalAreaName" />
+                <ScalarProperty Name="GoalAreaId" ColumnName="GoalAreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CatchFireModelStoreContainer" CdmEntityContainer="CatchFireEntities">
+    <EntitySetMapping Name="Traits">
+      <EntityTypeMapping TypeName="CatchFireModel.Trait">
+        <MappingFragment StoreEntitySet="Trait">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="PositiveTrait" ColumnName="PositiveTrait" />
+          <ScalarProperty Name="TraitDescription" ColumnName="TraitDescription" />
+          <ScalarProperty Name="TraitName" ColumnName="TraitName" />
+          <ScalarProperty Name="TraitId" ColumnName="TraitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goals">
+      <EntityTypeMapping TypeName="CatchFireModel.Goal">
+        <MappingFragment StoreEntitySet="Goal">
+          <ScalarProperty Name="GoalAreaId" ColumnName="GoalAreaId" />
+          <ScalarProperty Name="GoalDescription" ColumnName="GoalDescription" />
+          <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+          <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoalAreas">
+      <EntityTypeMapping TypeName="CatchFireModel.GoalArea">
+        <MappingFragment StoreEntitySet="GoalArea">
+          <ScalarProperty Name="GoalAreaDescription" ColumnName="GoalAreaDescription" />
+          <ScalarProperty Name="GoalAreaName" ColumnName="GoalAreaName" />
+          <ScalarProperty Name="GoalAreaId" ColumnName="GoalAreaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

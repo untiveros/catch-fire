@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CatchFireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Goal">
+    <Key>
+      <PropertyRef Name="GoalId" />
+    </Key>
+    <Property Name="GoalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoalName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="GoalDescription" Type="varchar" MaxLength="500" />
+    <Property Name="GoalAreaId" Type="int" />
+  </EntityType>
+  <EntityType Name="GoalArea">
+    <Key>
+      <PropertyRef Name="GoalAreaId" />
+    </Key>
+    <Property Name="GoalAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoalAreaName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="GoalAreaDescription" Type="varbinary" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Trait">
+    <Key>
+      <PropertyRef Name="TraitId" />
+    </Key>
+    <Property Name="TraitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TraitName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TraitDescription" Type="varchar" MaxLength="500" />
+    <Property Name="PositiveTrait" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="CatchFireModelStoreContainer">
+    <EntitySet Name="Goal" EntityType="Self.Goal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoalArea" EntityType="Self.GoalArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trait" EntityType="Self.Trait" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
